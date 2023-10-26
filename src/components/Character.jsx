@@ -23,7 +23,7 @@ function Character() {
         return () => {
             //Removemos el evento document.body.removeEventListener('scroll', function)
         }
-        
+
     }, [])
 
     const handleCounter = () => {
