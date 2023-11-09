@@ -1,10 +1,10 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import CartWidget from "./CartWidget";
 
 function Navbar() {
   return (
     <header className="flex justify-center p-6">
-      <nav>
+      <nav className="flex gap-10">
         <ul className="flex gap-10 justify-center">
           <li>
             <NavLink
@@ -39,6 +39,9 @@ function Navbar() {
             </NavLink>
           </li>
         </ul>
+        <Link to="/cart">
+          <CartWidget />
+        </Link>
       </nav>
     </header>
   );
