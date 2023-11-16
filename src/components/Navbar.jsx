@@ -16,7 +16,7 @@ function Navbar() {
           </li>
           <li>
             <NavLink
-              to="/categorias/remeras"
+              to="/category/shirts"
               className={({ isActive }) => (isActive ? "underline" : "")}
             >
               Remeras
@@ -24,7 +24,7 @@ function Navbar() {
           </li>
           <li>
             <NavLink
-              to="/categorias/pantalones"
+              to="/category/trousers"
               className={({ isActive }) => (isActive ? "underline" : "")}
             >
               Pantalones
@@ -32,7 +32,7 @@ function Navbar() {
           </li>
           <li>
             <NavLink
-              to="/categorias/gorras"
+              to="/category/hats"
               className={({ isActive }) => (isActive ? "underline" : "")}
             >
               Gorras

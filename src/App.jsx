@@ -3,8 +3,8 @@ import { CartProvider } from "./context/CartContext";
 import Home from "./screens/Home";
 import Category from "./screens/Category";
 import Navbar from "./components/Navbar";
-import Login from "./screens/Login";
 import Cart from "./screens/Cart";
+import Detail from "./screens/Detail";
 import "./App.css";
 
 function App() {
@@ -16,11 +16,14 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/categorias/:idCategory" element={<Category />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/category/:idCategory" element={<Category />} />
+          <Route path="/detail/:idProduct" element={<Detail />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="*" element={<div>Not Found 404</div>} />
         </Routes>
+
+        {/* Footer */}
+        
       </CartProvider>
     </BrowserRouter>
   );
