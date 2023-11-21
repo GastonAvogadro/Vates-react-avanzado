@@ -31,7 +31,7 @@ export function CartProvider({ children }) {
     if (isInCart(idProduct)) {
       setCart(
         cart.map((item) => {
-          item.id === idProduct ? { id: idProduct, quantity: item.quantity + quantity } : item;
+          return item.id === idProduct ? { id: idProduct, quantity: item.quantity + quantity } : item;
         })
       );
     } else {
