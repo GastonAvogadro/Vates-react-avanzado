@@ -1,50 +1,29 @@
-import React, { useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
+import { CartContext } from "../context/CartContext";
+import OrderForm from "../components/OrderForm";
 
 function Cart() {
-  const userNameRef = useRef(null);
-  const userEmailRef = useRef(null);
+  const {cart, cartItems, fetchCartItems, emptyCart, removeItem } = useContext(CartContext);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  console.log(cartItems);
 
-    const db = getFirestore();
-
-    const collectionRef = collection(db, "orders");
-
-    const order = {
-      userName: userNameRef.current.value,
-      userEmail: userEmailRef.current.value,
-      items: [],
-      totalPrice: 0
+  useEffect(()=> {
+    if(cart.length > 0) {
+      fetchCartItems()
     }
-
-    addDoc(collectionRef, order)
-     .then((res)=> alert(`La orden ha sido enviada con éxito, su orden es: ${res.id}`))
-  };
+  }, [])
 
   return (
     <div>
-      <form
-        onSubmit={handleSubmit}
-        className="flex flex-col gap-6 items-center"
-      >
-        <input
-          ref={userNameRef}
-          type="text"
-          placeholder="Ingrese su nombre completo"
-          className="w-[400px] text-black"
-          required
-        />
-        <input
-          ref={userEmailRef}
-          type="email"
-          placeholder="Ingrese su email"
-          className="w-[400px] text-black"
-          required
-        />
-        <button type="submit">Enviar orden</button>
-      </form>
+      {cartItems?.map(item => (
+        <div className="flex items-center justify-center">
+        <p>{item.name}</p>
+        <button onClick={()=> removeItem(item.id)}>🗑️</button>
+        </div>
+      ))}
+      <button onClick={emptyCart}>Vaciar carrito</button>
+      <OrderForm />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { doc, getDoc, getFirestore } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ItemCounter from "../components/ItemCounter";
 
 function Detail() {
   const [item, setItem] = useState({});
@@ -24,6 +25,7 @@ function Detail() {
     <div>
       <h3>{item.name}</h3>
       <img src={item.image} alt={item.name} />
+      <ItemCounter id={item.id}/>
     </div>
   );
 }
